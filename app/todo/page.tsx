@@ -1,4 +1,4 @@
-import { getTasks, createTask, deleteTask } from "@/lib/tasks";
+import { getTasks, addTask, removeTask } from "@/lib/task";
 
 export default async function Page() {
   const tasks = await getTasks();
@@ -9,13 +9,16 @@ export default async function Page() {
         {tasks.map((task, id) => (
           <li key={id}>
             {task.title}
-            <form action={deleteTask.bind(null, id)} className="inline ml-2">
+            <form
+              action={removeTask.bind(null, task.id)}
+              className="inline ml-2"
+            >
               <button className="text-red-500">Supprimer</button>
             </form>
           </li>
         ))}
       </ul>
-      <form action={createTask}>
+      <form action={addTask}>
         Tache: <input name="title" />
         <button> Ajoutez </button>
       </form>
