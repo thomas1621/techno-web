@@ -5,7 +5,7 @@ type EditPostPageProps = {
 };
 
 export default async function EditPostPage(props: EditPostPageProps) {
-  const id = Number((await props.params).id);
+  const id = (await props.params).id;
   const post = await getPost(id);
 
   return (

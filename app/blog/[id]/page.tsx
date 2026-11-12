@@ -5,7 +5,7 @@ type BlogPostPageProps = {
 };
 
 export default async function BlogPostPage(props: BlogPostPageProps) {
-  const id = Number((await props.params).id);
+  const id = (await props.params).id;
   const post = await getPost(id);
 
   return (
